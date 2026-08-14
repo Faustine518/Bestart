@@ -6,9 +6,6 @@
   <meta name="theme-color" content="#faf9f6">
   <meta name="description" content="《淤青战争》— Faustine 私人文库沉浸式阅读页。">
   <title>淤青战争 · Article Vault By Faustine</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=LXGW+WenKai&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
   <style>
     :root {
@@ -31,7 +28,7 @@
       background:
         radial-gradient(circle at 50% 0, rgba(255, 255, 255, .78), transparent 32rem),
         var(--paper);
-      font-family: "LXGW WenKai", "Noto Serif SC", "Songti SC", "STSong", serif;
+      font-family: "LXGW WenKai", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       opacity: 1;
@@ -46,14 +43,10 @@
     .js body.page-ready {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity .8s ease, transform .8s ease;
+      transition: opacity .28s ease, transform .28s ease;
     }
 
     .back-link {
-      position: fixed;
-      z-index: 10;
-      top: max(1.5rem, env(safe-area-inset-top));
-      left: clamp(1.2rem, 4vw, 3.5rem);
       color: #68645e;
       font: 400 .78rem/1.4 "Cormorant Garamond", serif;
       letter-spacing: .13em;
@@ -64,10 +57,47 @@
     .back-link:hover,
     .back-link:focus-visible { color: #aaa59e; outline: none; }
 
+    .chapter-bar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: grid;
+      grid-template-columns: auto minmax(0, 750px) auto;
+      align-items: center;
+      gap: 1rem;
+      min-height: 3.7rem;
+      padding: max(.65rem, env(safe-area-inset-top)) clamp(1rem, 4vw, 3.5rem) .65rem;
+      border-bottom: 1px solid rgba(170, 165, 157, .38);
+      background: rgba(250, 249, 246, .93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .chapter-bar-label {
+      color: #9b968e;
+      font: 400 .62rem/1 "Cormorant Garamond", serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .chapter-select {
+      width: 100%;
+      min-width: 0;
+      padding: .45rem 2rem .45rem .7rem;
+      border: 0;
+      border-radius: 0;
+      color: #514d48;
+      background: transparent;
+      font: 400 .78rem/1.4 "Noto Serif SC", "Songti SC", serif;
+      letter-spacing: .05em;
+      cursor: pointer;
+      outline: none;
+    }
+
     .reading-shell {
       width: min(calc(100% - 3rem), 750px);
       margin: 0 auto;
-      padding: clamp(7rem, 15vh, 11rem) 0 clamp(6rem, 12vh, 10rem);
+      padding: clamp(4.8rem, 10vh, 7rem) 0 clamp(5rem, 10vh, 8rem);
     }
 
     .article-header { text-align: center; margin-bottom: clamp(4rem, 9vh, 7rem); }
@@ -84,18 +114,11 @@
     }
 
     .metadata {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: .7rem 1.4rem;
       margin-top: 1.7rem;
       color: var(--muted);
-      font: 400 .62rem/1.6 "Cormorant Garamond", "Noto Serif SC", serif;
-      letter-spacing: .19em;
-      text-transform: uppercase;
+      font: 300 .64rem/1.6 "Noto Serif SC", "Songti SC", serif;
+      letter-spacing: .18em;
     }
-
-    .metadata span + span::before { content: "·"; margin-right: 1.4rem; color: #c8c3bb; }
 
     blockquote {
       margin: 0 0 3.5rem;
@@ -185,14 +208,36 @@
       overflow-wrap: break-word;
     }
 
-    .body-copy.opening::first-letter {
-      float: left;
-      margin: .1em .14em 0 0;
-      color: #34312e;
-      font: 500 4.25em/.78 "Noto Serif SC", "Songti SC", serif;
+    .body-copy em { color: #4c4843; }
+
+    .js .chapter:not(.is-active),
+    .js .scene-break,
+    .js .end-mark { display: none; }
+
+    .chapter-pager {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      margin-top: clamp(4rem, 9vh, 7rem);
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--rule);
     }
 
-    .body-copy em { color: #4c4843; }
+    .pager-button {
+      border: 0;
+      padding: .7rem 0;
+      color: #625d57;
+      background: transparent;
+      font: 400 .78rem/1.4 "Noto Serif SC", serif;
+      letter-spacing: .08em;
+      cursor: pointer;
+    }
+
+    .pager-button:first-child { text-align: left; }
+    .pager-button:last-child { text-align: right; }
+    .pager-button:disabled { visibility: hidden; }
+    .chapter-progress { color: #aaa59d; font: 400 .65rem/1 "Cormorant Garamond", serif; letter-spacing: .12em; }
 
     .date-entry {
       margin: 4rem 0 2rem;
@@ -224,12 +269,12 @@
     }
 
     @media (max-width: 640px) {
-      .back-link { position: absolute; }
-      .reading-shell { width: min(calc(100% - 2.4rem), 750px); padding-top: 7.5rem; }
+      .chapter-bar { grid-template-columns: auto minmax(0, 1fr); gap: .55rem; padding-inline: 1rem; }
+      .chapter-bar-label { display: none; }
+      .chapter-select { font-size: .72rem; }
+      .reading-shell { width: min(calc(100% - 2.4rem), 750px); padding-top: 4.5rem; }
       .article-header { margin-bottom: 4rem; }
       .article-title { font-size: clamp(2.45rem, 10.8vw, 3.3rem); letter-spacing: .02em; white-space: nowrap; }
-      .metadata { display: grid; gap: .28rem; }
-      .metadata span + span::before { content: none; }
       blockquote { padding: 1.1rem 1.15rem 1.1rem 1.35rem; }
       .publication-note { margin-bottom: 4rem; }
       .body-copy { font-size: 1rem; line-height: 1.9; letter-spacing: .035em; text-align: left; }
@@ -242,30 +287,32 @@
   </style>
 </head>
 <body>
-  <a class="back-link" href="./" aria-label="返回文库首页">← Back</a>
+  <nav class="chapter-bar" aria-label="章节目录">
+    <a class="back-link" href="./" aria-label="返回文库首页">← Back</a>
+    <select class="chapter-select" id="chapter-select" aria-label="选择章节"></select>
+    <span class="chapter-bar-label">Contents</span>
+  </nav>
 
   <main class="reading-shell">
     <article>
       <header class="article-header">
         <h1 class="article-title"><span class="book-marks">《</span>淤青战争<span class="book-marks">》</span></h1>
-        <div class="metadata" aria-label="文章信息">
-          <span>Date: 2026</span>
-          <span>Author: Faustine</span>
-          <span>Word Count: 64,182</span>
-        </div>
+        <div class="metadata" aria-label="文章信息">Hearts2Hearts群像</div>
       </header>
 
-      <blockquote class="epigraph"><p>末日下我为你的伤口祷告，流血也不会疼痛。</p></blockquote>
-      <blockquote class="publication-note">
-        <strong>Publication Note</strong>
-        <ul><li>H2H全员群像 僵尸校园paro</li><li>主2347 涉及成员死亡</li></ul>
-      </blockquote>
+      <div class="article-intro">
+        <blockquote class="epigraph"><p>末日下我为你的伤口祷告，流血也不会疼痛。</p></blockquote>
+        <blockquote class="publication-note">
+          <strong>Publication Note</strong>
+          <ul><li>H2H全员群像 僵尸校园paro</li><li>主2347 涉及成员死亡</li></ul>
+        </blockquote>
+      </div>
 
       <div class="article-body">
         <hr class="scene-break" aria-hidden="true">
         <section class="chapter" id="chapter-01">
         <h2><span class="chapter-number">01</span><span class="chapter-name">Pain Drop</span></h2>
-        <p class="body-copy opening">韩国女高教室后面贴了一块全身镜，一到夏天后窗的太阳就会把它晒到变形，课间女校学生们就会跑去在边缘贴上专辑里拆出来的贴纸，然后拿着CCD像对着711的凹凸镜一样自拍，嬉嬉笑笑说是要在SNS上掀起新潮。阳台上碍手的金鱼缸先是被抱到讲台，后来担心吃了太多粉笔灰，估计会比在操场暴晒失去痕迹得更快，推来推去就交到学生会长柜子上放着了。</p>
+        <p class="body-copy">韩国女高教室后面贴了一块全身镜，一到夏天后窗的太阳就会把它晒到变形，课间女校学生们就会跑去在边缘贴上专辑里拆出来的贴纸，然后拿着CCD像对着711的凹凸镜一样自拍，嬉嬉笑笑说是要在SNS上掀起新潮。阳台上碍手的金鱼缸先是被抱到讲台，后来担心吃了太多粉笔灰，估计会比在操场暴晒失去痕迹得更快，推来推去就交到学生会长柜子上放着了。</p>
         <p class="body-copy">但学生会长本人并不知情。披着校服外套趴在课桌上不知道睡了多久。</p>
         <p class="body-copy">“呀，柳河览什么时候变得这么厚脸皮了？”</p>
         <p class="body-copy">从加拿大回来的同龄人好友气势汹汹地闯进教室，第一件事就是拿出手机开始拍照：“校庆日所有人忙上忙下，但是会长大人躲在教室里吹空调睡觉？你有听过这么离谱的事吗，这下我要把你传到IG快拍上去。”</p>
@@ -1686,11 +1733,54 @@
         </section>
       </div>
 
+      <nav class="chapter-pager" aria-label="章节翻页">
+        <button class="pager-button" id="previous-chapter" type="button">← 上一章</button>
+        <span class="chapter-progress" id="chapter-progress"></span>
+        <button class="pager-button" id="next-chapter" type="button">下一章 →</button>
+      </nav>
+
       <footer class="article-footer">Article Vault By Faustine · Private Edition</footer>
     </article>
   </main>
   <script>
-    requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('page-ready')));
+    (() => {
+      const chapters = [...document.querySelectorAll('.chapter[id]')];
+      const select = document.getElementById('chapter-select');
+      const previous = document.getElementById('previous-chapter');
+      const next = document.getElementById('next-chapter');
+      const progress = document.getElementById('chapter-progress');
+      const intro = document.querySelector('.article-intro');
+      let current = Math.max(0, chapters.findIndex((chapter) => chapter.id === location.hash.slice(1)));
+
+      chapters.forEach((chapter, index) => {
+        const number = chapter.querySelector('.chapter-number')?.textContent.trim() || '';
+        const name = chapter.querySelector('.chapter-name')?.textContent.trim() || `章节 ${index + 1}`;
+        select.add(new Option(`${number} · ${name}`, chapter.id));
+      });
+
+      function showChapter(index, updateHistory = true) {
+        current = Math.min(Math.max(index, 0), chapters.length - 1);
+        chapters.forEach((chapter, chapterIndex) => chapter.classList.toggle('is-active', chapterIndex === current));
+        select.value = chapters[current].id;
+        previous.disabled = current === 0;
+        next.disabled = current === chapters.length - 1;
+        progress.textContent = `${current + 1} / ${chapters.length}`;
+        intro.hidden = current !== 0;
+        if (updateHistory) history.replaceState(null, '', `#${chapters[current].id}`);
+        window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+
+      select.addEventListener('change', () => showChapter(chapters.findIndex((chapter) => chapter.id === select.value)));
+      previous.addEventListener('click', () => showChapter(current - 1));
+      next.addEventListener('click', () => showChapter(current + 1));
+      addEventListener('hashchange', () => {
+        const index = chapters.findIndex((chapter) => chapter.id === location.hash.slice(1));
+        if (index >= 0) showChapter(index, false);
+      });
+
+      showChapter(current, false);
+      requestAnimationFrame(() => document.body.classList.add('page-ready'));
+    })();
   </script>
 </body>
 </html>
