@@ -301,7 +301,7 @@
       animation: row-dissolve 1.12s var(--ease) forwards;
     }
 
-    .story.mist-exit .story-name { animation: text-dissolve 1.12s var(--ease) forwards; }
+    .story.mist-exit .story-name { animation: text-dissolve .32s var(--ease) forwards; }
 
     .snow-ground {
       position: absolute;
@@ -796,7 +796,7 @@
             window.location.href = destination;
             link.classList.remove('mist-exit');
             link.removeAttribute('aria-disabled');
-          }, reduceMotion ? 30 : 1120);
+          }, reduceMotion ? 0 : 280);
         });
       });
     })();
