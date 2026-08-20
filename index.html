@@ -558,6 +558,9 @@
       animation: glow-breathe 6s ease-in-out 1.5s infinite;
     }
 
+    /* 点亮后路灯只保留视觉效果，不再遮挡移动端目录的触摸区域。 */
+    .page.is-lit .lamp { pointer-events: none; }
+
     .lamp-hint {
       position: absolute;
       z-index: 8;
