@@ -65,18 +65,25 @@
     .quick-nav button { padding: .45rem .5rem; border: 0; color: var(--leaf-deep); background: transparent; font-family: var(--latin),var(--serif); font-size: .9rem; cursor: pointer; }
     .quick-nav button:hover:not(:disabled),.quick-nav button:focus-visible:not(:disabled) { color: var(--blossom); }
     .quick-nav button:disabled { color: #b8c0bb; cursor: default; }
-    .masthead { position: relative; display: grid; place-items: center; min-height: clamp(30rem,68vh,43rem); padding: 5rem 1.5rem 4rem; overflow: hidden; text-align: center; isolation: isolate; }
-    .masthead-copy { position: relative; }
-    .masthead-kicker { margin: 0 0 1.3rem; color: var(--leaf); font-family: var(--latin),serif; font-size: .8rem; letter-spacing: .42em; text-transform: uppercase; }
-    .masthead h1 { margin: 0; color: #384b40; font-size: clamp(3.7rem,8.4vw,7.3rem); font-weight: 300; line-height: 1.05; letter-spacing: .12em; }
-    .masthead-english { margin: 1.2rem 0 0; color: #8c9991; font-family: var(--latin),serif; font-size: clamp(.88rem,1.4vw,1.08rem); letter-spacing: .34em; text-transform: uppercase; }
-    .masthead-meta { display: inline-flex; align-items: center; gap: .8rem; margin: 2.4rem 0 0; color: #728078; font-size: .8rem; letter-spacing: .22em; }
-    .masthead-meta::before,.masthead-meta::after { content: ""; width: 2.4rem; height: 1px; background: var(--line); }
-    .season-rings { position: absolute; z-index: -1; top: 50%; left: 50%; width: clamp(20rem,43vw,34rem); aspect-ratio: 1; transform: translate(-50%,-50%) rotate(-12deg); }
-    .season-rings i { position: absolute; inset: calc(var(--i) * 2.2rem); border: 1px solid color-mix(in srgb,var(--tone) 24%,transparent); border-radius: 50%; }
-    .season-rings i::after { content: ""; position: absolute; top: calc(50% - 3px); right: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--tone); opacity: .42; }
-    .petal { position: absolute; z-index: -1; width: 7px; height: 13px; border-radius: 80% 0 80% 0; background: rgba(199,156,160,.22); transform: rotate(var(--r)); }
-    .petal.one { top: 27%; left: 18%; --r: 22deg; } .petal.two { top: 68%; right: 17%; --r: 65deg; } .petal.three { top: 18%; right: 28%; --r: -18deg; }
+    .masthead { position: relative; display: flex; align-items: center; min-height: clamp(31rem,70vh,45rem); padding: 5rem max(1.5rem,calc((100vw - 70rem)/2)) 4rem; overflow: hidden; text-align: left; isolation: isolate; }
+    .masthead::after { content: ""; position: absolute; z-index: -2; right: 0; bottom: 11%; width: 54%; height: 1px; background: linear-gradient(90deg,transparent,rgba(70,100,85,.2)); }
+    .masthead-copy { position: relative; z-index: 2; width: min(39rem,58vw); padding-left: clamp(.2rem,2vw,2rem); }
+    .masthead-copy::before { content: ""; position: absolute; top: .1rem; bottom: .1rem; left: 0; width: 1px; background: linear-gradient(var(--leaf),transparent); opacity: .58; }
+    .masthead-kicker { margin: 0 0 1.45rem; color: var(--leaf); font-family: var(--latin),serif; font-size: .8rem; letter-spacing: .36em; text-transform: uppercase; }
+    .masthead h1 { margin: 0; color: #384b40; font-size: clamp(4rem,8vw,7rem); font-weight: 300; line-height: 1.05; letter-spacing: .11em; }
+    .masthead-english { margin: 1.25rem 0 0; color: #8c9991; font-family: var(--latin),serif; font-size: clamp(.9rem,1.4vw,1.12rem); letter-spacing: .34em; text-transform: uppercase; }
+    .masthead-meta { display: inline-flex; align-items: center; gap: .8rem; margin: 2.5rem 0 0; color: #728078; font-size: .8rem; letter-spacing: .22em; }
+    .masthead-meta::after { content: ""; width: 3.8rem; height: 1px; background: var(--line); }
+    .memory-pages { position: absolute; z-index: -1; top: 13%; right: max(2rem,calc((100vw - 74rem)/2)); display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; width: min(42vw,35rem); height: 74%; transform: rotate(1.5deg); }
+    .memory-pages i { position: relative; overflow: hidden; border: 1px solid rgba(70,100,85,.13); background: linear-gradient(180deg,var(--wash),rgba(255,255,255,.08) 68%,rgba(255,255,255,.44)); box-shadow: 0 1.2rem 2.8rem rgba(58,75,65,.045); transform: translateY(var(--shift)); }
+    .memory-pages i::before { content: ""; position: absolute; top: 10%; bottom: 10%; left: 50%; width: 1px; background: linear-gradient(transparent,rgba(70,100,85,.12),transparent); }
+    .memory-pages b { position: absolute; right: .3rem; bottom: .8rem; color: rgba(70,100,85,.43); font-family: var(--latin),serif; font-size: .66rem; font-weight: 400; letter-spacing: .18em; line-height: 1; text-transform: uppercase; writing-mode: vertical-rl; }
+    .botanical { position: absolute; z-index: 1; right: max(1.8rem,calc((100vw - 76rem)/2)); bottom: 3%; width: 7rem; height: 13rem; opacity: .48; transform: rotate(-7deg); }
+    .botanical::before { content: ""; position: absolute; left: 53%; bottom: 0; width: 1px; height: 100%; background: linear-gradient(transparent,var(--leaf)); transform: rotate(17deg); transform-origin: bottom; }
+    .botanical i { position: absolute; width: 2.8rem; height: 1.25rem; border: 1px solid var(--leaf); border-radius: 100% 0 100% 0; }
+    .botanical i:nth-child(1) { top: 23%; left: 25%; transform: rotate(18deg); }
+    .botanical i:nth-child(2) { top: 48%; right: 3%; transform: scaleX(-1) rotate(22deg); }
+    .botanical i:nth-child(3) { top: 67%; left: 15%; transform: rotate(12deg); }
     .reader-shell { width: min(47rem,calc(100% - 3rem)); margin: auto; padding: clamp(3.8rem,7vw,6.8rem) 0 7rem; }
     .chapter { animation: chapter-in .48s ease both; }
     .chapter-header { margin-bottom: clamp(3.5rem,7vw,6rem); text-align: center; }
@@ -111,8 +118,13 @@
       .chapter-select { padding-left:.72rem; font-size:.8rem; }
       .quick-nav { gap:0; } .quick-nav button { padding-inline:.35rem; font-size:0; }
       .quick-nav button:first-child::after { content:"‹ Prev"; font-size:.78rem; } .quick-nav button:last-child::after { content:"Next ›"; font-size:.78rem; }
-      .masthead { min-height:27rem; padding:4rem 1rem 3rem; }
-      .masthead h1 { font-size:clamp(3.1rem,16vw,4.5rem); letter-spacing:.08em; }
+      .masthead { min-height:30rem; padding:4rem 1.35rem 3rem; align-items:flex-start; }
+      .masthead-copy { width:100%; margin-top:3.4rem; padding-left:1rem; }
+      .masthead h1 { max-width:5em; font-size:clamp(3.15rem,16vw,4.5rem); letter-spacing:.08em; }
+      .masthead-kicker { max-width:17rem; font-size:.7rem; line-height:1.8; }
+      .memory-pages { top:7%; right:-2.7rem; width:58vw; height:78%; gap:.42rem; opacity:.58; }
+      .memory-pages b { display:none; }
+      .botanical { right:-1rem; bottom:1%; transform:scale(.78) rotate(-7deg); }
       .reader-shell { width:min(100% - 2.4rem,43rem); padding-top:3.6rem; }
       .chapter-header { margin-bottom:3.5rem; }
       .story-body { font-size:1.04rem; }
@@ -131,8 +143,8 @@
     </div>
   </nav>
   <header class="masthead">
-    <div class="season-rings" aria-hidden="true"><i style="--i:0;--tone:#6e8f78"></i><i style="--i:1;--tone:#c79ca0"></i><i style="--i:2;--tone:#8ca6aa"></i><i style="--i:3;--tone:#8ea66f"></i></div>
-    <i class="petal one" aria-hidden="true"></i><i class="petal two" aria-hidden="true"></i><i class="petal three" aria-hidden="true"></i>
+    <div class="memory-pages" aria-hidden="true"><i style="--wash:rgba(110,143,120,.15);--shift:1.8rem"><b>Spring 01</b></i><i style="--wash:rgba(199,156,160,.15);--shift:0"><b>Spring 02</b></i><i style="--wash:rgba(140,166,170,.14);--shift:3.3rem"><b>Spring 03</b></i><i style="--wash:rgba(142,166,111,.14);--shift:.8rem"><b>Spring 04</b></i></div>
+    <div class="botanical" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="masthead-copy">
       <p class="masthead-kicker">Memory returns with every spring</p>
       <h1>四个春天</h1>
