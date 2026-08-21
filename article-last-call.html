@@ -48,6 +48,7 @@
     .masthead { position:relative;display:grid;grid-template-columns:minmax(20rem,.85fr) minmax(26rem,1.15fr);align-items:center;gap:clamp(2rem,5vw,7rem);min-height:clamp(36rem,78vh,51rem);padding:clamp(4rem,7vw,7rem) max(1.5rem,calc((100vw - 74rem)/2));overflow:hidden;color:#eef0ef;background:
       linear-gradient(90deg,rgba(214,106,92,.035) 1px,transparent 1px) 0 0/7vw 100%,
       linear-gradient(180deg,#10141a,#171e26 68%,#11161c);isolation:isolate; }
+    .masthead::before { content:"";position:absolute;z-index:4;right:0;bottom:-1px;left:0;height:clamp(6rem,10vw,9rem);pointer-events:none;background:linear-gradient(180deg,transparent 0%,rgba(240,238,233,.08) 30%,rgba(240,238,233,.58) 72%,var(--paper) 100%); }
     .masthead::after { content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 53%,rgba(127,152,163,.06) 53.2%,transparent 53.4%); }
     .masthead-copy { position:relative;z-index:3;padding-left:clamp(1rem,3vw,3rem); }
     .masthead-copy::before { content:"";position:absolute;top:.25rem;bottom:.25rem;left:0;width:2px;background:linear-gradient(var(--signal),rgba(214,106,92,.05));box-shadow:0 0 18px rgba(214,106,92,.22); }
@@ -67,7 +68,7 @@
     .signal-wave i { position:relative;z-index:1;flex:1;height:var(--h);min-width:2px;background:linear-gradient(180deg,rgba(214,106,92,.78),rgba(127,152,163,.16));transform-origin:center;animation:signal-breathe 3.8s ease-in-out calc(var(--h)*-30ms) infinite alternate; }
     .call-status { position:absolute;z-index:3;right:0;bottom:1rem;display:grid;grid-template-columns:auto auto;gap:.35rem 1.8rem;text-align:right;color:rgba(190,204,210,.46);font-family:var(--latin),serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase; }
     .call-status b { color:rgba(224,160,146,.8);font-weight:400; }
-    .reader-shell { width:min(47rem,calc(100% - 3rem));margin:auto;padding:clamp(4.2rem,8vw,7.2rem) 0 7rem; }
+    .reader-shell { width:min(47rem,calc(100% - 3rem));margin:auto;padding:clamp(3rem,5.5vw,4.8rem) 0 7rem; }
     .chapter { animation:chapter-in .42s ease both; }
     .chapter-header { margin-bottom:clamp(3.6rem,7vw,6rem);text-align:center; }
     .chapter-number { display:block;margin-bottom:.75rem;color:var(--signal);font-family:var(--latin),serif;font-size:.8rem;letter-spacing:.44em; }
@@ -104,7 +105,7 @@
       .timecode { bottom:13%;font-size:29vw; }
       .signal-wave { height:48%;gap:3px; }
       .call-status { gap:.28rem 1rem;font-size:.53rem; }
-      .reader-shell { width:min(100% - 2.4rem,43rem);padding-top:3.8rem; }
+      .reader-shell { width:min(100% - 2.4rem,43rem);padding-top:3.15rem; }
       .chapter-header { margin-bottom:3.7rem; }
       .story-body { font-size:1.04rem; }
       .story-paragraph { line-height:1.92;text-align:left; }
