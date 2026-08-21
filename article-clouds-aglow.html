@@ -37,7 +37,8 @@
     .masthead-copy { position:relative;z-index:4;padding-left:clamp(1rem,4vw,4rem); }
     .masthead-copy::before { content:"";position:absolute;top:.15rem;bottom:.15rem;left:0;width:1px;background:linear-gradient(transparent,var(--blue) 20% 80%,transparent); }
     .masthead-kicker { margin:0 0 1.4rem;color:#938b91;font-family:var(--latin),serif;font-size:.76rem;letter-spacing:.33em;text-transform:uppercase; }
-    .masthead h1 { margin:0;font-size:clamp(5.1rem,10vw,9.6rem);font-weight:300;line-height:.87;letter-spacing:.04em; }
+    .masthead h1 { display:grid;row-gap:.08em;margin:0;font-size:clamp(5.1rem,10vw,9.6rem);font-weight:300;line-height:1;letter-spacing:.04em; }
+    .masthead h1 b { display:block;font-weight:inherit; }
     .masthead h1 span { display:block;margin-left:clamp(2.2rem,7vw,7rem);background:linear-gradient(96deg,#454957 4%,var(--rose) 52%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent; }
     .masthead-english { margin:1.5rem 0 0;color:#78737b;font-family:var(--latin),serif;font-size:clamp(1.2rem,2.2vw,1.75rem);font-style:italic;letter-spacing:.18em; }
     .masthead-quote { max-width:27rem;margin:2.5rem 0 0;color:#77727a;font-size:.85rem;font-weight:300;line-height:2;letter-spacing:.12em; }
@@ -75,7 +76,7 @@
       .vault-link { font-size:0; } .vault-link::before { content:"←";font-size:1.2rem; } .chapter-select { padding-left:.72rem;font-size:.83rem; }
       .quick-nav { gap:0; } .quick-nav button { padding-inline:.35rem;font-size:0; } .quick-nav button:first-child::after { content:"‹ Prev";font-size:.78rem; } .quick-nav button:last-child::after { content:"Next ›";font-size:.78rem; }
       .masthead { grid-template-columns:1fr;align-content:start;gap:1rem;min-height:49rem;padding:4.2rem 1.25rem 2.5rem; } .masthead-copy { padding-left:1rem; }
-      .masthead h1 { font-size:clamp(4.8rem,24vw,7.2rem); } .masthead h1 span { margin-left:2.1rem; } .masthead-english { font-size:1.12rem; } .masthead-quote { margin-top:1.8rem;font-size:.77rem; }
+      .masthead h1 { row-gap:.12em;font-size:clamp(4rem,18vw,5.7rem);line-height:1; } .masthead h1 span { margin-left:2.1rem; } .masthead-english { font-size:1.12rem; } .masthead-quote { margin-top:1.8rem;font-size:.77rem; }
       .prism-field { height:18.5rem;min-height:18.5rem;margin-top:-.4rem; } .pane-a { left:0;width:52%; } .pane-b { right:0;width:61%; } .pane-c { right:19%;width:49%; } .prism-label { right:1%;font-size:.56rem; }
       .reader-shell { width:min(100% - 2.4rem,43rem);padding-top:3.5rem; } .chapter-header { margin-bottom:3.8rem; } .story-body { font-size:1.04rem; } .story-paragraph { line-height:1.94;text-align:left;text-indent:2em; } .story-paragraph.emphasis { text-indent:2em; } .chapter-pager { grid-template-columns:1fr; }
     }
@@ -91,7 +92,7 @@
   <header class="masthead">
     <div class="masthead-copy">
       <p class="masthead-kicker">Iridescent fiction · fragile things</p>
-      <h1>云蒸<span>霞蔚</span></h1>
+      <h1><b>云蒸</b><span>霞蔚</span></h1>
       <p class="masthead-english">Clouds Aglow</p>
       <p class="masthead-quote">世间好物不坚牢，琉璃易碎彩云散。</p>
       <p class="masthead-meta">柳河览 · 崔志宇</p>
