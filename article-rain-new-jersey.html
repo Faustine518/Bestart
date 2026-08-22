@@ -64,49 +64,51 @@
 
     /* Rain-night edition: one continuous dark atmosphere, from cover to final page. */
     :root {
-      --night:#071b24; --night-deep:#04141c; --night-soft:#0c2630;
-      --paper:#d8e5e5; --paper-soft:#9bb2b7; --rain:#76b9ca;
-      --amber:#f4b45f; --amber-hot:#ffd38a; --line:rgba(145,190,199,.18);
+      --night:#101622; --night-deep:#090e18; --night-soft:#17202e;
+      --paper:#e3e7ed; --paper-soft:#a8b4c3; --rain:#88a5c3;
+      --amber:#c98d62; --amber-hot:#edb986; --lily:#e5a7b2; --line:rgba(145,168,194,.18);
       --mist:var(--night); --ink:var(--paper); --ink-soft:var(--paper-soft);
       --wine:var(--amber); --sage:var(--rain); --steel:#5f8792;
     }
     body { color:var(--paper);background:var(--night); }
-    body::before { background:radial-gradient(circle at 78% 14%,rgba(63,124,139,.16),transparent 31rem),linear-gradient(180deg,var(--night-deep),var(--night)); }
+    body::before { background:radial-gradient(circle at 78% 14%,rgba(80,103,145,.17),transparent 31rem),linear-gradient(180deg,var(--night-deep),var(--night)); }
     .reading-progress { height:2px;background:linear-gradient(90deg,var(--amber),var(--rain));box-shadow:0 0 10px rgba(244,180,95,.35); }
-    .topbar { border-color:var(--line);background:rgba(4,20,28,.86); }
+    .topbar { border-color:var(--line);background:rgba(9,14,24,.88); }
     .vault-link,.quick-nav button { color:#9eb8bd; }
     .vault-link:hover,.vault-link:focus-visible,.quick-nav button:hover:not(:disabled),.quick-nav button:focus-visible:not(:disabled) { color:var(--amber-hot); }
     .select-wrap::after { color:var(--amber); }
     .chapter-select { outline-color:rgba(145,190,199,.18);color:#c4d4d6;background:rgba(118,185,202,.055); }
     .chapter-select:focus-visible { outline-color:rgba(244,180,95,.62); }
-    .chapter-select option { color:#d8e5e5;background:#08202a; }
+    .chapter-select option { color:#e3e7ed;background:#111927; }
     .quick-nav button:disabled { color:#45616a; }
 
     .masthead { grid-template-columns:minmax(25rem,.9fr) minmax(28rem,1.1fr);min-height:clamp(43rem,88vh,58rem);background:var(--night); }
-    .masthead::before { background:linear-gradient(110deg,rgba(2,12,18,.3),transparent 54%),radial-gradient(circle at 86% 40%,rgba(244,180,95,.08),transparent 25rem); }
+    .masthead::before { background:linear-gradient(110deg,rgba(5,8,15,.35),transparent 54%),radial-gradient(circle at 86% 40%,rgba(229,167,178,.07),transparent 25rem); }
     .programme { padding-left:clamp(1.25rem,4vw,4.5rem); }
     .programme::before { width:3px;background:linear-gradient(transparent,var(--amber) 12% 70%,transparent);box-shadow:0 0 18px rgba(244,180,95,.25); }
     .masthead-kicker { color:#77aab5; }
     .masthead h1 { color:#e0ebea;font-size:clamp(4.8rem,8.8vw,8.7rem);letter-spacing:.015em; }
-    .masthead h1 span { color:var(--amber);text-shadow:0 0 38px rgba(244,180,95,.12); }
+    .masthead h1 span { color:var(--lily);text-shadow:0 0 38px rgba(229,167,178,.12); }
     .masthead-english { color:#9ac4ce; }
     .prelude { color:#8ea7ad;font-size:.8rem; }
     .masthead-meta { color:#668991; }
     .masthead-meta::after { background:linear-gradient(90deg,var(--amber),transparent); }
 
-    .rain-window { position:relative;z-index:2;height:min(65vh,39rem);min-height:31rem;overflow:hidden;border-left:1px solid rgba(118,185,202,.2);background:linear-gradient(115deg,transparent 5%,rgba(118,185,202,.04) 45%,rgba(244,180,95,.055)); }
-    .rain-window::before { content:"";position:absolute;inset:-35% -15%;opacity:.42;transform:rotate(12deg);background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(142,205,218,.23) 23px,transparent 24px 50px);mask-image:linear-gradient(to bottom,transparent,#000 14% 80%,transparent); }
-    .rain-window::after { content:"";position:absolute;right:8%;bottom:13%;width:clamp(8rem,17vw,14rem);height:clamp(17rem,35vw,29rem);border-radius:50% 50% 42% 42%;background:linear-gradient(180deg,rgba(255,211,138,.82),rgba(244,180,95,.17) 48%,transparent 86%);filter:blur(18px);opacity:.72;transform:perspective(400px) rotateX(58deg);transform-origin:bottom; }
-    .window-grid { position:absolute;inset:5% 3% 8% 5%;border:1px solid rgba(139,187,197,.16);background:linear-gradient(90deg,transparent 49.9%,rgba(139,187,197,.17) 50%,transparent 50.1%),linear-gradient(180deg,transparent 67%,rgba(139,187,197,.2) 67.2%,transparent 67.4%); }
-    .window-grid::before { content:"";position:absolute;left:12%;top:12%;width:34%;height:34%;border-top:1px solid rgba(244,180,95,.4);border-left:1px solid rgba(244,180,95,.4); }
-    .window-grid::after { content:"NJ";position:absolute;right:5%;top:5%;color:rgba(118,185,202,.18);font-family:var(--latin),serif;font-size:clamp(7rem,15vw,13rem);font-style:italic;line-height:1; }
-    .rain-streak { position:absolute;z-index:2;top:-15%;width:1px;height:48%;background:linear-gradient(transparent,rgba(174,222,231,.6),transparent);transform:rotate(13deg); }
-    .rain-streak:nth-of-type(1) { left:18%;height:38%; }
-    .rain-streak:nth-of-type(2) { left:42%;top:9%;height:55%; }
-    .rain-streak:nth-of-type(3) { left:69%;height:44%; }
-    .rain-streak:nth-of-type(4) { left:87%;top:18%;height:39%; }
-    .route-card { position:absolute;z-index:4;right:7%;bottom:8%;padding:1rem 1.2rem;border-left:2px solid var(--amber);color:#aec6ca;background:rgba(3,17,24,.7);font-family:var(--latin),serif;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;backdrop-filter:blur(8px); }
-    .route-card strong { display:block;margin-top:.42rem;color:var(--amber-hot);font-size:1rem;font-weight:400;letter-spacing:.12em; }
+    .duet-field { position:relative;z-index:2;height:min(65vh,39rem);min-height:31rem;overflow:hidden;border-left:1px solid rgba(136,165,195,.22);background:radial-gradient(circle at 62% 47%,rgba(229,167,178,.055),transparent 14rem),linear-gradient(115deg,transparent 5%,rgba(136,165,195,.035)); }
+    .duet-field::before { content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 4.25rem,rgba(136,165,195,.09) 4.25rem calc(4.25rem + 1px));mask-image:linear-gradient(90deg,transparent,#000 12% 88%,transparent); }
+    .duet-art { position:absolute;inset:2% 2% 5%;width:96%;height:93%;overflow:visible; }
+    .duet-art .rain { stroke:#7895b4;stroke-width:1;opacity:.2; }
+    .duet-art .cello { fill:none;stroke:#c8d0db;stroke-width:2;opacity:.72; }
+    .duet-art .cello-ghost { stroke:#738196;opacity:.3; }
+    .duet-art .string-whole { stroke:var(--amber-hot);stroke-width:1.4; }
+    .duet-art .string-broken { stroke:var(--lily);stroke-width:1.4; }
+    .duet-art .scar { fill:none;stroke:var(--lily);stroke-width:2.5;stroke-linecap:round; }
+    .duet-art .bow { stroke:#9eb1c8;stroke-width:1.2;opacity:.48; }
+    .duet-art .lily-stem { fill:none;stroke:#89a995;stroke-width:1.5; }
+    .duet-art .lily-petal { fill:rgba(229,167,178,.14);stroke:var(--lily);stroke-width:1.2; }
+    .duet-note { position:absolute;z-index:4;left:7%;bottom:7%;margin:0;color:#8da1b8;font-family:var(--latin),serif;font-size:.7rem;letter-spacing:.21em;text-transform:uppercase; }
+    .duet-note strong { display:block;margin-top:.5rem;color:#d5dbe4;font-size:.98rem;font-weight:400;letter-spacing:.13em; }
+    .farewell-note { position:absolute;z-index:4;right:5%;bottom:6%;margin:0;color:var(--lily);font-family:var(--latin),serif;font-size:.72rem;font-style:italic;letter-spacing:.13em; }
 
     .reader-shell::before { background:linear-gradient(180deg,rgba(118,185,202,.035),transparent 11rem),var(--night); }
     .chapter-number { color:var(--amber); }
@@ -127,9 +129,10 @@
     @media (max-width:760px) {
       .masthead { grid-template-columns:minmax(0,1fr);min-height:53rem;padding-top:4.5rem; }
       .masthead h1 { font-size:clamp(4rem,18vw,5.8rem); }
-      .rain-window { height:18rem;min-height:18rem;margin-top:1rem; }
-      .route-card { right:4%;bottom:4%;font-size:.62rem; }
-      .window-grid::after { font-size:8rem; }
+      .duet-field { height:20rem;min-height:20rem;margin-top:1rem; }
+      .duet-note { left:4%;bottom:3%;font-size:.57rem; }
+      .duet-note strong { font-size:.78rem; }
+      .farewell-note { right:3%;bottom:3%;font-size:.6rem; }
     }
   </style>
 </head>
@@ -148,10 +151,21 @@
       <div class="prelude"><span data-source-key="1:0">新泽西的雨季大概是120天，</span><span data-source-key="2:0">冗长到大提琴都长了霉斑，</span><span data-source-key="3:0">拉出的音色嘶哑又刺耳，</span><span data-source-key="4:0">再唤不回一个18岁的AntonLee。</span></div>
       <p class="masthead-meta">Four movements for cello</p>
     </div>
-    <div class="rain-window" aria-hidden="true">
-      <div class="window-grid"></div>
-      <i class="rain-streak"></i><i class="rain-streak"></i><i class="rain-streak"></i><i class="rain-streak"></i>
-      <p class="route-card">New Jersey · after midnight<strong>120 days of rain</strong></p>
+    <div class="duet-field" aria-hidden="true">
+      <svg class="duet-art" viewBox="0 0 620 560" role="img" aria-label="两把曾经合奏的大提琴，其中一根琴弦在伤痕处断开，旁边留有一枝百合">
+        <g class="rain"><path d="M72 18l-38 132M166 0l-49 172M287 16l-39 136M421 0l-46 164M565 12l-37 130"/><path d="M128 300L82 460M343 285l-51 180M506 278l-43 151"/></g>
+        <g class="cello">
+          <path d="M205 58v98M205 155c-43-7-63 28-38 64-39 31-27 123 38 143 65-20 77-112 38-143 25-36 5-71-38-64zM205 362v98M188 181c12 12 22 12 34 0M181 319c16-9 32-9 48 0"/>
+          <path class="cello-ghost" d="M405 58v98M405 155c-43-7-63 28-38 64-39 31-27 123 38 143 65-20 77-112 38-143 25-36 5-71-38-64zM405 362v98M388 181c12 12 22 12 34 0M381 319c16-9 32-9 48 0"/>
+        </g>
+        <path class="string-whole" d="M205 60v400"/>
+        <path class="string-broken" d="M405 60v191M405 287v173"/>
+        <path class="scar" d="M392 260l11-8 8 10 10-7"/>
+        <path class="bow" d="M92 332L506 188"/>
+        <g><path class="lily-stem" d="M493 474c22-28 35-61 37-101"/><path class="lily-petal" d="M530 376c-29-8-39-25-33-39 20 1 35 13 33 39z"/><path class="lily-petal" d="M531 376c3-29 18-43 34-39 2 19-9 35-34 39z"/><path class="lily-petal" d="M530 376c-15-19-15-38-1-47 14 11 15 27 1 47z"/></g>
+      </svg>
+      <p class="duet-note">Two cellos · once in unison<strong>one remaining voice</strong></p>
+      <p class="farewell-note">Jacqueline's Tears · sixteen years</p>
     </div>
   </header>
   <main class="reader-shell" id="reader-shell">
