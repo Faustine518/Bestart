@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#e8ecea">
+  <meta name="theme-color" content="#071b24">
   <meta name="description" content="《雨落新泽西》沉浸式章节阅读页">
   <title>雨落新泽西 · 第一章</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +61,76 @@
       .score-field { height:17.5rem;min-height:17.5rem; } .fingerboard { right:9%;width:67%; } .score-caption { font-size:.54rem; } .score-note { font-size:.72rem; } .staff { background-size:100% 3.25rem; }
       .reader-shell { width:min(100% - 2.4rem,43rem);padding-top:3.6rem; } .chapter-header { margin-bottom:3.7rem; } .story-body { font-size:1.04rem; } .story-paragraph { line-height:1.94;text-align:left;text-indent:2em; } .story-paragraph.emphasis { text-indent:2em; } .movement-mark { margin-top:3rem; } .chapter-pager { grid-template-columns:1fr; }
     }
+
+    /* Rain-night edition: one continuous dark atmosphere, from cover to final page. */
+    :root {
+      --night:#071b24; --night-deep:#04141c; --night-soft:#0c2630;
+      --paper:#d8e5e5; --paper-soft:#9bb2b7; --rain:#76b9ca;
+      --amber:#f4b45f; --amber-hot:#ffd38a; --line:rgba(145,190,199,.18);
+      --mist:var(--night); --ink:var(--paper); --ink-soft:var(--paper-soft);
+      --wine:var(--amber); --sage:var(--rain); --steel:#5f8792;
+    }
+    body { color:var(--paper);background:var(--night); }
+    body::before { background:radial-gradient(circle at 78% 14%,rgba(63,124,139,.16),transparent 31rem),linear-gradient(180deg,var(--night-deep),var(--night)); }
+    .reading-progress { height:2px;background:linear-gradient(90deg,var(--amber),var(--rain));box-shadow:0 0 10px rgba(244,180,95,.35); }
+    .topbar { border-color:var(--line);background:rgba(4,20,28,.86); }
+    .vault-link,.quick-nav button { color:#9eb8bd; }
+    .vault-link:hover,.vault-link:focus-visible,.quick-nav button:hover:not(:disabled),.quick-nav button:focus-visible:not(:disabled) { color:var(--amber-hot); }
+    .select-wrap::after { color:var(--amber); }
+    .chapter-select { outline-color:rgba(145,190,199,.18);color:#c4d4d6;background:rgba(118,185,202,.055); }
+    .chapter-select:focus-visible { outline-color:rgba(244,180,95,.62); }
+    .chapter-select option { color:#d8e5e5;background:#08202a; }
+    .quick-nav button:disabled { color:#45616a; }
+
+    .masthead { grid-template-columns:minmax(25rem,.9fr) minmax(28rem,1.1fr);min-height:clamp(43rem,88vh,58rem);background:var(--night); }
+    .masthead::before { background:linear-gradient(110deg,rgba(2,12,18,.3),transparent 54%),radial-gradient(circle at 86% 40%,rgba(244,180,95,.08),transparent 25rem); }
+    .programme { padding-left:clamp(1.25rem,4vw,4.5rem); }
+    .programme::before { width:3px;background:linear-gradient(transparent,var(--amber) 12% 70%,transparent);box-shadow:0 0 18px rgba(244,180,95,.25); }
+    .masthead-kicker { color:#77aab5; }
+    .masthead h1 { color:#e0ebea;font-size:clamp(4.8rem,8.8vw,8.7rem);letter-spacing:.015em; }
+    .masthead h1 span { color:var(--amber);text-shadow:0 0 38px rgba(244,180,95,.12); }
+    .masthead-english { color:#9ac4ce; }
+    .prelude { color:#8ea7ad;font-size:.8rem; }
+    .masthead-meta { color:#668991; }
+    .masthead-meta::after { background:linear-gradient(90deg,var(--amber),transparent); }
+
+    .rain-window { position:relative;z-index:2;height:min(65vh,39rem);min-height:31rem;overflow:hidden;border-left:1px solid rgba(118,185,202,.2);background:linear-gradient(115deg,transparent 5%,rgba(118,185,202,.04) 45%,rgba(244,180,95,.055)); }
+    .rain-window::before { content:"";position:absolute;inset:-35% -15%;opacity:.42;transform:rotate(12deg);background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(142,205,218,.23) 23px,transparent 24px 50px);mask-image:linear-gradient(to bottom,transparent,#000 14% 80%,transparent); }
+    .rain-window::after { content:"";position:absolute;right:8%;bottom:13%;width:clamp(8rem,17vw,14rem);height:clamp(17rem,35vw,29rem);border-radius:50% 50% 42% 42%;background:linear-gradient(180deg,rgba(255,211,138,.82),rgba(244,180,95,.17) 48%,transparent 86%);filter:blur(18px);opacity:.72;transform:perspective(400px) rotateX(58deg);transform-origin:bottom; }
+    .window-grid { position:absolute;inset:5% 3% 8% 5%;border:1px solid rgba(139,187,197,.16);background:linear-gradient(90deg,transparent 49.9%,rgba(139,187,197,.17) 50%,transparent 50.1%),linear-gradient(180deg,transparent 67%,rgba(139,187,197,.2) 67.2%,transparent 67.4%); }
+    .window-grid::before { content:"";position:absolute;left:12%;top:12%;width:34%;height:34%;border-top:1px solid rgba(244,180,95,.4);border-left:1px solid rgba(244,180,95,.4); }
+    .window-grid::after { content:"NJ";position:absolute;right:5%;top:5%;color:rgba(118,185,202,.18);font-family:var(--latin),serif;font-size:clamp(7rem,15vw,13rem);font-style:italic;line-height:1; }
+    .rain-streak { position:absolute;z-index:2;top:-15%;width:1px;height:48%;background:linear-gradient(transparent,rgba(174,222,231,.6),transparent);transform:rotate(13deg); }
+    .rain-streak:nth-of-type(1) { left:18%;height:38%; }
+    .rain-streak:nth-of-type(2) { left:42%;top:9%;height:55%; }
+    .rain-streak:nth-of-type(3) { left:69%;height:44%; }
+    .rain-streak:nth-of-type(4) { left:87%;top:18%;height:39%; }
+    .route-card { position:absolute;z-index:4;right:7%;bottom:8%;padding:1rem 1.2rem;border-left:2px solid var(--amber);color:#aec6ca;background:rgba(3,17,24,.7);font-family:var(--latin),serif;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;backdrop-filter:blur(8px); }
+    .route-card strong { display:block;margin-top:.42rem;color:var(--amber-hot);font-size:1rem;font-weight:400;letter-spacing:.12em; }
+
+    .reader-shell::before { background:linear-gradient(180deg,rgba(118,185,202,.035),transparent 11rem),var(--night); }
+    .chapter-number { color:var(--amber); }
+    .chapter-header h2 { color:#dce8e7; }
+    .chapter-header p { color:#698d95; }
+    .chapter-header::after { background:linear-gradient(90deg,transparent,var(--rain),var(--amber),transparent); }
+    .story-paragraph { color:#c9d7d8;font-weight:300; }
+    .story-paragraph.emphasis { color:#f1d2a3; }
+    .movement-mark { color:var(--amber); }
+    .movement-mark span { color:#6e98a1; }
+    .movement-mark i { background:linear-gradient(90deg,rgba(244,180,95,.45),rgba(118,185,202,.1),transparent); }
+    .end-mark { color:#7fa7ae; }
+    .chapter-pager { border-color:var(--line); }
+    .chapter-pager button { border-color:rgba(145,190,199,.15);color:#9fb8bd;background:rgba(118,185,202,.035); }
+    .chapter-pager button:hover:not(:disabled) { color:var(--amber-hot);border-color:rgba(244,180,95,.3);background:rgba(244,180,95,.04); }
+    .chapter-pager button:disabled { color:#45616a; }
+    .chapter-pager span { color:#668991; }
+    @media (max-width:760px) {
+      .masthead { grid-template-columns:minmax(0,1fr);min-height:53rem;padding-top:4.5rem; }
+      .masthead h1 { font-size:clamp(4rem,18vw,5.8rem); }
+      .rain-window { height:18rem;min-height:18rem;margin-top:1rem; }
+      .route-card { right:4%;bottom:4%;font-size:.62rem; }
+      .window-grid::after { font-size:8rem; }
+    }
   </style>
 </head>
 <body>
@@ -78,9 +148,10 @@
       <div class="prelude"><span data-source-key="1:0">新泽西的雨季大概是120天，</span><span data-source-key="2:0">冗长到大提琴都长了霉斑，</span><span data-source-key="3:0">拉出的音色嘶哑又刺耳，</span><span data-source-key="4:0">再唤不回一个18岁的AntonLee。</span></div>
       <p class="masthead-meta">Four movements for cello</p>
     </div>
-    <div class="score-field" aria-hidden="true">
-      <div class="staff"></div><div class="fingerboard"><i class="string"></i><i class="string"></i><i class="string"></i><i class="string"></i><i class="bridge"></i><div class="string-labels"><span>I</span><span>II</span><span>III</span><span>IV</span></div></div>
-      <p class="score-caption">A memory scored in rain</p><p class="score-note">Jacqueline's Tears · sixteen years</p>
+    <div class="rain-window" aria-hidden="true">
+      <div class="window-grid"></div>
+      <i class="rain-streak"></i><i class="rain-streak"></i><i class="rain-streak"></i><i class="rain-streak"></i>
+      <p class="route-card">New Jersey · after midnight<strong>120 days of rain</strong></p>
     </div>
   </header>
   <main class="reader-shell" id="reader-shell">
@@ -119,3 +190,4 @@
   </script>
 </body>
 </html>
+
